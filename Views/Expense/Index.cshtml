@@ -1,0 +1,30 @@
+﻿@model List<ExpenseApp.Models.Expense>
+
+<h2>💰 Expense Tracker</h2>
+
+<a href="/Expense/Create" class="btn btn-primary">+ Add Expense</a>
+
+<h4>Total Expense: ₹ @ViewBag.Total</h4>
+
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Amount (₹)</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var e in Model)
+    {
+        <tr>
+            <td>@e.Id</td>
+            <td>@e.Title</td>
+            <td>@e.Amount</td>
+            <td>@e.Date.ToString("dd-MM-yyyy")</td>
+            <td>
+                <a href="/Expense/Delete/@e.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
